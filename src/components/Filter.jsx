@@ -1,30 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Filter = ({ onFilter }) => {
-    const [title, setTitle] = useState("");
-    const [note, setNote] = useState("");
-
-    const handleFilter = () => {
-        onFilter({ title, note: parseFloat(note) });
-    };
-
-    return (
-        <div className="filter">
-            <input
-                type="text"
-                placeholder="Title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-            />
-            <input
-                type="number"
-                placeholder="Note"
-                value={note}
-                onChange={(e) => setNote(e.target.value)}
-            />
-            <button onClick={handleFilter}>Filter</button>
-        </div>
-    );
+const Filter = ({ setFilterTitle, setFilterRating }) => {
+  return (
+    <div style={{ display: "flex", justifyContent: "center", gap: "10px", marginBottom: "20px" }}>
+      <input
+        type="text"
+        placeholder="Filtrer par titre"
+        onChange={(e) => setFilterTitle(e.target.value)}
+        style={{ padding: "10px", borderRadius: "5px", border: "1px solid #ccc", fontSize: "1rem" }}
+      />
+      <input
+        type="number"
+        placeholder="Filtrer par note"
+        onChange={(e) => setFilterRating(Number(e.target.value))}
+        style={{ padding: "10px", borderRadius: "5px", border: "1px solid #ccc", fontSize: "1rem" }}
+      />
+    </div>
+  );
 };
 
 export default Filter;
